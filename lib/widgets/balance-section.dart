@@ -1,15 +1,10 @@
 import 'package:expense_tracker/providers/transactions-provider.dart';
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/material.dart';
 
-class BalanceSection extends StatefulWidget {
+class BalanceSection extends StatelessWidget {
   const BalanceSection({Key? key}) : super(key: key);
 
-  @override
-  _BalanceSectionState createState() => _BalanceSectionState();
-}
-
-class _BalanceSectionState extends State<BalanceSection> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,9 +19,13 @@ class _BalanceSectionState extends State<BalanceSection> {
                 color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
           ),
           Text(
-            "PKR ${context.watch<TransactionProvider>().getTotalBill}",
+            'PKR ${context.watch<TransactionProvider>().totalBalance.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},')}',
             style: TextStyle(
-                color: Colors.green, fontSize: 30, fontWeight: FontWeight.bold),
+                color: context.watch<TransactionProvider>().totalBalance > 0
+                    ? Colors.green
+                    : Colors.red,
+                fontSize: 30,
+                fontWeight: FontWeight.bold),
           ),
         ],
       ),

@@ -27,7 +27,7 @@ class TransactionItem extends StatelessWidget {
               style: TextStyle(fontSize: 16),
             ),
             Text(
-              "PKR ${this._item.amount}",
+              "PKR ${this._item.amount.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},')}",
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
