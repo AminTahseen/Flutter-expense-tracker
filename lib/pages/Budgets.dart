@@ -1,3 +1,6 @@
+import 'package:expense_tracker/widgets/budget-list.dart';
+import 'package:expense_tracker/widgets/budget-section.dart';
+
 import 'package:flutter/material.dart';
 
 class Budgets extends StatelessWidget {
@@ -6,9 +9,10 @@ class Budgets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(10.0),
-      padding: const EdgeInsets.all(10.0),
-      child: Text("Budgets"),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [BudgetSection(), BudgetList()],
+      ),
     );
   }
 }
