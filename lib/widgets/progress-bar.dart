@@ -1,3 +1,4 @@
+import 'package:expense_tracker/utils/helper.dart';
 import 'package:flutter/material.dart';
 
 class ProgressBar extends StatelessWidget {
@@ -27,17 +28,19 @@ class ProgressBar extends StatelessWidget {
             widthFactor: _spendingPercentOfTotal,
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.green,
+                color: ((_spending / _spendingMax) * 100) >= 100.0
+                    ? Colors.red
+                    : Colors.green,
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
           ),
           Container(
             child: Text(
-              "${(_spending / _spendingMax) * 100} %",
+              "${Helper().removeTrailingZero(((_spending / _spendingMax) * 100).toString())}%",
               style: TextStyle(color: Colors.white),
             ),
-            margin: const EdgeInsets.only(left: 100.0, top: 1.0),
+            margin: const EdgeInsets.only(left: 50.0, top: 1.0),
           ),
         ],
       ),

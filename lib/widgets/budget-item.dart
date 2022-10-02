@@ -1,4 +1,5 @@
 import 'package:expense_tracker/models/budget.dart';
+import 'package:expense_tracker/utils/helper.dart';
 import 'package:expense_tracker/widgets/progress-bar.dart';
 import 'package:flutter/material.dart';
 
@@ -24,9 +25,10 @@ class BudgetItem extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Text('PKR ${_budget.budgetSpend} '),
                     Text(
-                      '/PKR ${_budget.budgetMax}',
+                        'PKR ${Helper().getFormattedAmount(_budget.budgetSpend.toString())} '),
+                    Text(
+                      '/PKR ${Helper().getFormattedAmount(_budget.budgetMax.toString())}',
                       style: TextStyle(color: Colors.grey),
                     )
                   ],
