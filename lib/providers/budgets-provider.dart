@@ -1,5 +1,5 @@
 import 'package:expense_tracker/models/budget.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class BudgetProvider with ChangeNotifier {
   List<Budget> _budgetList = [
@@ -10,4 +10,9 @@ class BudgetProvider with ChangeNotifier {
 
   List<Budget> get getBudgetList => _budgetList;
   int get getBudgetCount => _budgetList.length;
+
+  void addBudget(Budget item) {
+    _budgetList.add(item);
+    notifyListeners();
+  }
 }

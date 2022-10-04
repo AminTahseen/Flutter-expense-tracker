@@ -1,3 +1,4 @@
+import 'package:expense_tracker/widgets/add-expense-dialog.dart';
 import 'package:flutter/material.dart';
 
 class BudgetSection extends StatelessWidget {
@@ -22,7 +23,14 @@ class BudgetSection extends StatelessWidget {
               ),
               // Button
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (context) {
+                      return AddExpenseDialog();
+                    },
+                  );
+                },
                 child: Container(
                   padding: const EdgeInsets.only(
                       left: 10.0, right: 10.0, top: 5.0, bottom: 5.0),

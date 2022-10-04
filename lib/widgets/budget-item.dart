@@ -30,7 +30,8 @@ class BudgetItem extends StatelessWidget {
                     Text(
                       '/PKR ${Helper().getFormattedAmount(_budget.budgetMax.toString())}',
                       style: TextStyle(color: Colors.grey),
-                    )
+                    ),
+                    IconButton(onPressed: () {}, icon: Icon(Icons.more_vert)),
                   ],
                 )
               ],

@@ -1,3 +1,4 @@
+import 'package:expense_tracker/providers/budget-expense-provider.dart';
 import 'package:expense_tracker/providers/budgets-provider.dart';
 import 'package:expense_tracker/providers/transactions-provider.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,9 @@ void main() {
         ),
         ChangeNotifierProvider(
           create: (_) => BudgetProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => BudgetExpenseProvider(),
         )
       ],
       child: MyApp(),
