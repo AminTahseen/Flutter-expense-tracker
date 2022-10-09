@@ -1,6 +1,7 @@
 import 'package:expense_tracker/providers/budget-expense-provider.dart';
 import 'package:expense_tracker/providers/budgets-provider.dart';
 import 'package:expense_tracker/providers/transactions-provider.dart';
+import 'package:expense_tracker/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'pages/Home.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Expense Tracker',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.green),
+      theme: ThemeData(primarySwatch: mainMaterialAppColor),
       home: Home(),
     );
   }

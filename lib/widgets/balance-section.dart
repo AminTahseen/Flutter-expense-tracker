@@ -1,4 +1,5 @@
 import 'package:expense_tracker/providers/transactions-provider.dart';
+import 'package:expense_tracker/utils/constants.dart';
 import 'package:expense_tracker/utils/helper.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
@@ -20,10 +21,10 @@ class BalanceSection extends StatelessWidget {
                 color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
           ),
           Text(
-            'PKR ${Helper().getFormattedAmount(context.watch<TransactionProvider>().totalBalance.toString())}',
+            '$currency ${Helper().getFormattedAmount(context.watch<TransactionProvider>().totalBalance.toString())}',
             style: TextStyle(
                 color: context.watch<TransactionProvider>().totalBalance > 0
-                    ? Colors.green
+                    ? mainAppColor
                     : Colors.red,
                 fontSize: 30,
                 fontWeight: FontWeight.bold),

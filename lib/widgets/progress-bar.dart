@@ -1,3 +1,4 @@
+import 'package:expense_tracker/utils/constants.dart';
 import 'package:expense_tracker/utils/helper.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,7 @@ class ProgressBar extends StatelessWidget {
               decoration: BoxDecoration(
                 color: ((_spending / _spendingMax) * 100) >= 100.0
                     ? Colors.red
-                    : Colors.green,
+                    : mainAppColor,
                 borderRadius: BorderRadius.circular(10),
               ),
             ),

@@ -31,6 +31,7 @@ class _AddExpenseDialogState extends State<AddExpenseDialog> {
     Transaction transaction = new Transaction(id, budgetCategory, amountInt);
     context.read<BudgetExpenseProvider>().addBudgetExpense(expense);
     context.read<TransactionProvider>().addTransaction(transaction);
+    context.read<BudgetProvider>().updateBudgetSpend(amount, budgetId);
   }
 
   @override

@@ -15,4 +15,15 @@ class BudgetProvider with ChangeNotifier {
     _budgetList.add(item);
     notifyListeners();
   }
+
+  void updateBudgetSpend(double spendAmount, int budgetId) {
+    int index = _budgetList.indexWhere((element) => element.id == budgetId);
+    _budgetList[index].budgetSpend += spendAmount;
+    notifyListeners();
+  }
+
+  void deleteBudget(Budget budget) {
+    _budgetList.remove(budget);
+    notifyListeners();
+  }
 }

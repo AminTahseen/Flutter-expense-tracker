@@ -1,4 +1,5 @@
 import 'package:expense_tracker/providers/transactions-provider.dart';
+import 'package:expense_tracker/utils/constants.dart';
 import 'package:expense_tracker/utils/helper.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
@@ -29,11 +30,11 @@ class IncomeExpenseCards extends StatelessWidget {
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "PKR ${Helper().getFormattedAmount(context.watch<TransactionProvider>().totalIncome.toString())}",
+                      "$currency ${Helper().getFormattedAmount(context.watch<TransactionProvider>().totalIncome.toString())}",
                       style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
-                        color: Colors.green,
+                        color: mainAppColor,
                       ),
                       textAlign: TextAlign.center,
                     )
@@ -59,7 +60,7 @@ class IncomeExpenseCards extends StatelessWidget {
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      "PKR ${Helper().getFormattedAmount(context.watch<TransactionProvider>().totalExpense.toString())}",
+                      "$currency ${Helper().getFormattedAmount(context.watch<TransactionProvider>().totalExpense.toString())}",
                       style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
