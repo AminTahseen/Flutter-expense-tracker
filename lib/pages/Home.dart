@@ -1,3 +1,5 @@
+import 'package:expense_tracker/widgets/tab-bar.dart';
+
 import '../pages/Budgets.dart';
 import '../pages/Insights.dart';
 import '../pages/Transactions.dart';
@@ -23,28 +25,18 @@ class Home extends StatelessWidget {
               length: 3,
               child: Column(
                 children: [
-                  Container(
-                    margin:
-                        const EdgeInsets.only(top: 10.0, left: 5.0, right: 5.0),
-                    decoration: BoxDecoration(color: Colors.grey.shade300),
-                    child: TabBar(
-                      indicator: BoxDecoration(
-                        color: Colors.black,
+                  MainTabBar(
+                    const [
+                      Tab(
+                        text: 'Transactions',
                       ),
-                      labelColor: Colors.white,
-                      unselectedLabelColor: Colors.black,
-                      tabs: const [
-                        Tab(
-                          text: 'Transactions',
-                        ),
-                        Tab(
-                          text: 'Budgets',
-                        ),
-                        Tab(
-                          text: 'Insights',
-                        ),
-                      ],
-                    ),
+                      Tab(
+                        text: 'Budgets',
+                      ),
+                      Tab(
+                        text: 'Insights',
+                      ),
+                    ],
                   ),
                   SingleChildScrollView(
                     child: Container(

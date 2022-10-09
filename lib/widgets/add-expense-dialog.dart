@@ -44,108 +44,109 @@ class _AddExpenseDialogState extends State<AddExpenseDialog> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: MediaQuery.of(context).size.height * 0.5,
-        child: SingleChildScrollView(
-          child: Container(
-            margin: const EdgeInsets.only(
-              top: 20.0,
-              left: 10.0,
-              right: 10.0,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Budget Expense",
+      height: MediaQuery.of(context).size.height * 0.5,
+      child: SingleChildScrollView(
+        child: Container(
+          margin: const EdgeInsets.only(
+            top: 20.0,
+            left: 10.0,
+            right: 10.0,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Budget Expense",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
+              Divider(
+                color: Colors.black,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Text(
+                  "Budget",
                   style: TextStyle(
                       color: Colors.black,
-                      fontSize: 20,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold),
                 ),
-                Divider(
-                  color: Colors.black,
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 10.0),
+                height: 50,
+                padding: const EdgeInsets.all(10.0),
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black45),
+                  borderRadius: BorderRadius.circular(5.0),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: Text(
-                    "Budget",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(top: 10.0),
-                  height: 50,
-                  padding: const EdgeInsets.all(10.0),
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black45),
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  child: DropdownButtonHideUnderline(
-                    child: DropdownButton<Budget>(
-                      value: dropdownvalue,
-                      icon: const Icon(Icons.keyboard_arrow_down),
-                      items: context
-                          .read<BudgetProvider>()
-                          .getBudgetList
-                          .map((Budget item) {
-                        return DropdownMenuItem(
-                          value: item,
-                          child: Text(item.category),
-                        );
-                      }).toList(),
-                      onChanged: (Budget? newValue) {
-                        setState(() {
-                          dropdownvalue = newValue!;
-                        });
-                      },
-                    ),
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton<Budget>(
+                    value: dropdownvalue,
+                    icon: const Icon(Icons.keyboard_arrow_down),
+                    items: context
+                        .read<BudgetProvider>()
+                        .getBudgetList
+                        .map((Budget item) {
+                      return DropdownMenuItem(
+                        value: item,
+                        child: Text(item.category),
+                      );
+                    }).toList(),
+                    onChanged: (Budget? newValue) {
+                      setState(() {
+                        dropdownvalue = newValue!;
+                      });
+                    },
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.only(top: 10.0),
-                  child: Text(
-                    "Budget Spending Amount",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 10.0),
+                child: Text(
+                  "Budget Spending Amount",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                height: 50,
+                margin: const EdgeInsets.only(top: 10.0),
+                child: TextField(
+                  controller: amountController,
+                  decoration: InputDecoration(
+                    fillColor: Colors.white,
+                    filled: true,
+                    border: OutlineInputBorder(),
+                    hintText: 'Enter Budget Spending Amount',
                   ),
                 ),
-                Container(
-                  height: 50,
-                  margin: const EdgeInsets.only(top: 10.0),
-                  child: TextField(
-                    controller: amountController,
-                    decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      filled: true,
-                      border: OutlineInputBorder(),
-                      hintText: 'Enter Budget Spending Amount',
-                    ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 10.0),
+                width: MediaQuery.of(context).size.width,
+                child: ElevatedButton(
+                  onPressed: () => _addBudgetTransaction(context),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: const Text('Create Budget Expense'),
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        Colors.deepPurpleAccent),
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.only(top: 10.0),
-                  width: MediaQuery.of(context).size.width,
-                  child: ElevatedButton(
-                    onPressed: () => _addBudgetTransaction(context),
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: const Text('Create Budget Expense'),
-                    ),
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          Colors.deepPurpleAccent),
-                    ),
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
